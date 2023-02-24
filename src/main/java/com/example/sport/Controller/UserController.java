@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest) {
         User user = new User();
-        user.setName(userRequest.getName());
+        user.setUsername(userRequest.getName());
         user.setEmail(userRequest.getEmail());
         return ResponseEntity.status(201).body(this.userRepository.save(user));
     }
@@ -65,7 +65,7 @@ public class UserController {
         Optional<User> user = this.userRepository.findById(id);
         if (user.isPresent()) {
             User user1 = user.get();
-            user1.setName(userRequest.getName());
+            user1.setUsername(userRequest.getName());
             user1.setEmail(userRequest.getEmail());
             return ResponseEntity.status(201).body(this.userRepository.save(user1));
         } else {
